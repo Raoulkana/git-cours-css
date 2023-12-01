@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+/* ici pour introduire notre police telecharger " DMSERIF" on fait  */
+@font-face {
+    font-family: "DMSerif";
+    src: url(./Fonts/DMSerifDisplay-Regular.ttf);
+}
+
+body {
+    font-family:  "DMSerif" , Verdana;
+    /* Quand on veut mettre une image d'arrière plans sur la page tu utilise ( background: url) et tu taper "center cover" */
+    background: url(./image-logo/lions-577104_1280.jpg) center/cover;
+    /* VH = 100% de la taille de l'écran (viewport height) NB: pour bien centrer l'image */
+    min-height: 100vh;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+
+    /* les tailles des polices doivent etre en REM ; il existe un autre qu'on peut utiliser "Vw" */
+    font-size: 2.5rem;
+    /* ici mettre la couleur de l'ombbre  */
+    text-shadow: 3px 3px 8px #00000078;
+     color: #1f3fdfc8;
+/* pour souligner un texte tu utulise  */
+     text-decoration: underline;
+/* si tu veux effectuer une police rapide sans aller sur "google font" tape "ff" et tu choisi celles qui st integrées */
+     font-family: 'Oswald', sans-serif;
+   
+}
+main {
+    /* sur le largueur(width) on utilise les % OR sur la hauteur c'est px */
+   min-height: 500px;
+    width:  90%;
+    background: rgba(247, 244, 244, 0.935);
+    /* pour centre une boite  */
+    margin: 0 auto;
+    border: 2px solid rgba(35, 104, 136, 0.691);
+    border-radius: 20px;
+    /* ici pour donner de l'effet ombre(shadow) a ta boite  */
+    box-shadow: 0 0 15px 13px #4de1aec7; 
+    padding: 15px;
+}
+
+h2{
+    margin: 0;
+}
+
+.flexbox, 
+.grid,
+.absolute  {
+    border: 2px solid skyblue;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    min-height: 150px;
+}
+    
+    /* Flexbox sert a repartir equitablement les elements sur la page */
+    .flexbox ul {
+        padding: 0;
+        /* le (display flex consiste a aligner les elements */
+        display: flex;
+        justify-content: space-around;
+
+    }
+
+    .flexbox li {
+        list-style: none;
+        height: 160px;
+        width: 160px;
+        margin: 10px;
+        background: rgb(182, 60, 60);
+        /* Centrer un unique element verticalement et horizontalement */
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+   
+    }
+    /* GRID  */
+    .grid-container {
+        display: grid;
+        grid-template-columns: 30% 70%;
+    }
+    .grid img {
+        width: 80%;
+        margin-top: 20px auto;
+        display: block;
+
+    }
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: 
+        "i1 i2"
+        "ta ta"
+        "vi bt";
+    }
+
+    input,textarea {
+        margin: 5px;
+        border: 1px solid darkblue;
+        padding: 10px;
+        font-size: 1.1rem;
+        font-family: "DMSerif";
+        border-radius: 10pxs; 
+    }
+
+    textarea {
+        grid-area: ta;
+        height: 40px;
+        resize: none;
+    }
+
+    /* ici pour pointer un (id ) tu utilise (#) */
+    #btn-submit {
+        grid-area: bt;
+        cursor: pointer;
+        background: darkgoldenrod;
+        transition: 0.2s;
+    }
+    
+    #btn-submit:hover {
+        background: darkmagenta;
+        color: azure; 
+    }
+
+
+/* Sans element en relative de base, l'élement en absolute l'est par rapport au body */
+    /* ABSOLUTE, NB: il faut mettre une position relative au parent pour contraindre l'èlèment en  absolute dans ses frontiere */
+    .absolute {
+        position: relative;
+    }
+    #circle1  {
+        height: 80px;
+        width: 80px;
+        background: darkblue;
+        position: absolute;
+        border-radius: 150px;
+        top: -15px;
+        right: -15px;
+
+    }
+
+    #circle2 {
+        height: 40px;
+        width: 40px;
+        border-radius: 150px;
+        background: tan;
+        position: absolute;
+        /* si tu veux centrer un élément en Absolute tu dois utiliser ça */
+        left: 50%;
+        transform: translateX(-50%);
+        top: 100px; 
+    }
+
+    /* RESPONSIVE  */
+    @media screen and (max-width: 800px) {
+        .grid-container {
+            display: block;
+        }
+        .grid-container img {
+            width: 40%;
+        }
+        
+    }
+    
+    @media screen and (max-width: 400px) {
+        .flexbox ul {
+            flex-direction: column ;
+            align-items: center;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+
+   
+
+        form {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: 
+            "i1"
+            "i2"
+            "ta"
+            "bt";
+        }
+        input,
+        textarea {
+            font-size: 0.8rem;
+        }
+    }
+
+
+        
+
+
+
